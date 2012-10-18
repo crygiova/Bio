@@ -1,0 +1,10 @@
+-------------------------------------------------------
+Computational Times
+-------------------------------------------------------
+
+Time for Input :	          5241648000 ns	         5 s
+Time Make Tree :	         60877736000 ns	        60 s
+Time Find Patt :	            85682000 ns	         0 s
+Time Statistic :	            97332000 ns	         0 s
+Time for Output:	          1387338000 ns	         1 s
+Time Total Comp :	         67692251000 ns	67 s

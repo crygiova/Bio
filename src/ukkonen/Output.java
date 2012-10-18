@@ -90,6 +90,13 @@ public class Output {
 		}
 		return str;
 	}
+	public static String rightAlign(Integer num, int width, char filler) {
+		String str = "";
+		while (num.toString().length() < width) {
+		str = filler + num.toString();
+		}
+		return str;
+	}
 	
 	
 }

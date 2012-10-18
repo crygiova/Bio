@@ -271,7 +271,9 @@ public class Tree {
 		timeCompFindPattern =System.nanoTime();
 		result = findPattern(decodedPattern,tree,vector.length,size,vector); //analyze tree with pattern and compute result
 		timeCompFindPattern= System.nanoTime()-timeCompFindPattern;
+		
 		/********************STAT PART********************/
+		
 		timeStat = System.nanoTime();
 		for(int q= 0;q<result.length;q++)
 		{
@@ -291,14 +293,18 @@ public class Tree {
 		/********************OUTPUT  part********************/
 		
 		System.out.println("OUTPUT");
+		int width = 20;
+		char filler = ' ';
 		timeOut =System.nanoTime();
-		//IOClass.writeOn("output.txt", result); //print the result in a file
-		PrintWriter writer = IOClass.getPrinter("stat.txt"); //TODO PRINT THE RESULT AND PRINT STAT
+		
+		//NOT WORKING FOR NOW -> IOClass.saveObj("treeObject.txt", tree); //print the Object SuffixTRee in a file -> we don't have to calculate it every time
+		
+		PrintWriter writer = IOClass.getPrinter("stat.txt"); 
 		writer.println(Output.incornicia("Strings that matches \t"+nMatching));
 		writer.println(Output.incornicia("\nDISTRIBUITIONS:\n"+printVector(distribuition)));
 		writer.close();
 		
-		writer = IOClass.getPrinter("result.txt");
+		writer = IOClass.getPrinter("result.txt");//write result on a file
 		for(int q= 0;q<result.length;q++)
 		{
 			writer.print("\n"+q+"\t>\t"+result[q]+" \n");
@@ -306,36 +312,37 @@ public class Tree {
 		writer.close();
 		
 		writer =IOClass.getPrinter("hashCounter.txt");
-		writer.println(hashCounter.toString());
+		writer.println(hashCounter.toString());//write the hash counter on a file
 		writer.close();
 
-		writer =IOClass.getPrinter("hashIndexes.txt");
+		writer =IOClass.getPrinter("hashIndexes.txt");//write the indexes hash on a file
 		writer.println(hashIndexes.toString());
 		writer.close();
 		timeOut = System.nanoTime()-timeOut;
+		
 		/********************** TIMING *******************************/
 		 
-		writer =IOClass.getPrinter("compTimes.txt");
-		writer.println(Output.incornicia("Computational Times"));
-		int width = 20;
-		char filler = ' ';
-		writer.println("Time :\t"+Output.rightAlign(timeIn.toString(), width, filler)+" ns");
-		Long temp=TimeUnit.SECONDS.convert(timeCompMkTree, TimeUnit.NANOSECONDS); 
-		writer.println("Time :\t"+Output.rightAlign(timeCompMkTree.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
-		temp=TimeUnit.SECONDS.convert(timeCompFindPattern, TimeUnit.NANOSECONDS);
-		writer.println("Time :\t"+Output.rightAlign(timeCompFindPattern.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
-		writer.println("Time :\t"+Output.rightAlign(timeStat.toString(), width, filler)+" ns");
-		writer.println("Time :\t"+Output.rightAlign(timeOut.toString(), width, filler)+" ns");
-		timeTot = System.nanoTime()-timeTot;
-		writer.println("Time :\t"+Output.rightAlign(timeTot.toString(), width, filler)+" ns\t"+TimeUnit.SECONDS.convert(timeTot, TimeUnit.NANOSECONDS)+" s");
+		writer =IOClass.getPrinter("compTimes"); //print all timing on a file 
 		
-		/*writer.println("Time :\t"+timeCompMkTree.toString()+" ns\t"+TimeUnit.SECONDS.convert(timeCompMkTree, TimeUnit.NANOSECONDS)+" s");
-		writer.println("Time :\t"+timeCompFindPattern.toString()+" ns\t"+TimeUnit.SECONDS.convert(timeCompFindPattern, TimeUnit.NANOSECONDS)+" s");
-		writer.println("Time :\t"+timeStat.toString()+" ns");
-		writer.println("Time :\t"+timeOut.toString()+" ns");
+		writer.println(Output.incornicia("Computational Times"));
+		Long temp=TimeUnit.SECONDS.convert(timeIn, TimeUnit.NANOSECONDS); 
+		writer.println("Time for Input :\t"+Output.rightAlign(timeIn.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
+		
+		temp=TimeUnit.SECONDS.convert(timeCompMkTree, TimeUnit.NANOSECONDS); 
+		writer.println("Time Make Tree :\t"+Output.rightAlign(timeCompMkTree.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
+		
+		temp=TimeUnit.SECONDS.convert(timeCompFindPattern, TimeUnit.NANOSECONDS);
+		writer.println("Time Find Patt :\t"+Output.rightAlign(timeCompFindPattern.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
+		
+		temp=TimeUnit.SECONDS.convert(timeStat, TimeUnit.NANOSECONDS);
+		writer.println("Time Statistic :\t"+Output.rightAlign(timeStat.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
+		
+		temp=TimeUnit.SECONDS.convert(timeOut, TimeUnit.NANOSECONDS);
+		writer.println("Time for Output:\t"+Output.rightAlign(timeOut.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
+		
 		timeTot = System.nanoTime()-timeTot;
-		writer.println("Time :\t"+timeTot.toString()+" ns\t"+TimeUnit.SECONDS.convert(timeTot, TimeUnit.NANOSECONDS)+" s");
-		*/writer.close();
+		writer.println("Time Total Comp :\t"+Output.rightAlign(timeTot.toString(), width, filler)+" ns\t"+TimeUnit.SECONDS.convert(timeTot, TimeUnit.NANOSECONDS)+" s");
+		writer.close();
 		
 		System.out.println("FIN");		
 	}

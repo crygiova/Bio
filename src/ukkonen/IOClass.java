@@ -13,13 +13,12 @@ public class IOClass
 	
 	public static int []  readStr (String fname)
 	 {
-		int k=0,count=5;
+		int count=5;
 		int i = 0;
 		Hashtable<String, Integer> h = new Hashtable<String, Integer>();
 		int vector[] = new int [4432461];
 		try{
-			int key;
-			 FileInputStream fstream = new FileInputStream(fname);
+			FileInputStream fstream = new FileInputStream(fname);
 	         DataInputStream in = new DataInputStream(fstream);
 	         BufferedReader br = new BufferedReader(new InputStreamReader(in));
 	         String strLine;
@@ -28,12 +27,10 @@ public class IOClass
 	        	
 	        	if(h.get(strLine)!=null)
 	        	{
-	        		k++;
 	        		h.put(strLine,h.get(strLine)+1);
 	        	}
 	        	else
 	        	{ //if the first time in the hash
-	        		k++;
 	        		h.put(strLine, 1);
 	        		int j=0;
 	        		int number=0;
@@ -149,20 +146,20 @@ public class IOClass
 		 } 
 	
 	
-	public static void saveObj (String f, String obj)
+	public static void saveObj (String f, Object obj)
 
 	 {
-		 BufferedWriter write = null;
+		 ObjectOutputStream write = null;
 		 try
 			{
-			 write = new BufferedWriter(new FileWriter(f));
-			 write.write(obj);
+			 write = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
+			 write.writeObject(obj);
 			}
 		 catch (IOException excScrittura)
 			{
 			 System.out.println(PRTNWRITE + f );
 			}
-  	     finally
+ 	     finally
 			{
 			 if (write != null)
 				{
@@ -172,12 +169,12 @@ public class IOClass
 				  }
 				 catch (IOException excChiusura)
 					{
-			 			System.out.println(PRTNEND + f );
+			 			System.out.println(PRTNEND + f);
 					}
 				}
 			}
 		 } 
-	
+		
 	public static void delete(File f)
 	{
 		f.delete();
