@@ -2,9 +2,9 @@
 Computational Times
 -------------------------------------------------------
 
-Time for Input :	          3216462000 ns	         3 s
-Time Make Tree :	         59203408000 ns	        59 s
-Time Find Patt :	            69363000 ns	         0 s
-Time Statistic :	            92728000 ns	         0 s
-Time for Output:	          2296691000 ns	         2 s
-Time Total Comp :	         64965057000 ns	64 s
+Time for Input :	          1612892000 ns	         1 s
+Time Make Tree :	         29006043000 ns	        29 s
+Time Find Patt :	            54134000 ns	         0 s
+Time Statistic :	            74226000 ns	         0 s
+Time for Output:	          1389143000 ns	         1 s
+Time Total Comp :	         32138963000 ns		32 s

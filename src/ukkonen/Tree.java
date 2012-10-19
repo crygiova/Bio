@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 import java.lang.System;
 import java.util.concurrent.TimeUnit;
 
+import utils.IOClass;
+import utils.Output;
+
 public class Tree 
 {
   public static int stacktrack;
@@ -320,7 +323,7 @@ public class Tree
 		
 		/********************** TIMING *******************************/
 		 
-		writer =IOClass.getPrinter("compTimes"); //print all timing on a file 
+		writer =IOClass.getPrinter("compTimes.txt"); //print all timing on a file 
 		
 		writer.println(Output.incornicia("Computational Times"));
 		Long temp=TimeUnit.SECONDS.convert(timeIn, TimeUnit.NANOSECONDS); 
@@ -339,7 +342,7 @@ public class Tree
 		writer.println("Time for Output:\t"+Output.rightAlign(timeOut.toString(), width, filler)+" ns\t"+Output.rightAlign(temp.toString(), width/2, filler)+" s");
 		
 		timeTot = System.nanoTime()-timeTot;
-		writer.println("Time Total Comp :\t"+Output.rightAlign(timeTot.toString(), width, filler)+" ns\t"+TimeUnit.SECONDS.convert(timeTot, TimeUnit.NANOSECONDS)+" s");
+		writer.println("Time Total Comp :\t"+Output.rightAlign(timeTot.toString(), width, filler)+" ns\t\t"+TimeUnit.SECONDS.convert(timeTot, TimeUnit.NANOSECONDS)+" s");
 		writer.close();
 		
 		System.out.println("FIN");		
