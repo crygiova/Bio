@@ -61,7 +61,6 @@ public class Tree
 				}
 			}
 		}
-		
 		return true;
 	}
 	/*
@@ -345,7 +344,7 @@ public class Tree
 		writer.println("Time Total Comp :\t"+Output.rightAlign(timeTot.toString(), width, filler)+" ns\t\t"+TimeUnit.SECONDS.convert(timeTot, TimeUnit.NANOSECONDS)+" s");
 		writer.close();
 		
-		System.out.println("FIN");		
+		System.out.println("FIN");	
 	}
 
 	public static String printVector(int [] vector)
